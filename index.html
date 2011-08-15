@@ -5,19 +5,50 @@
 	<title></title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript">
+
+var colors = ['#fcc', '#cfc', '#ccf'];
+
 function doPie(values, el){
+    console.log(values);
     sum = 0;
+    total = 0;
+    for(val in values) {
+        total+=values[val];
+    }
+    angles = new Array();
+    $(el).html('');
     for(val in values) {
         r = parseInt(Math.random()*255);
         g = parseInt(Math.random()*255);
         b = parseInt(Math.random()*255);
-        $(el).append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:rgb('+r+','+g+','+b+');-webkit-transform:rotate('+values[val]+'deg)" class="pie"></div></div>');
-        sum+=values[val];
+        angle = parseInt(36000*(values[val]/total))/100;
+        angles.push(angle);
+        //put 2
+        if (angle > 180){
+            $(el).append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+colors[val]+';-webkit-transform:rotate('+(180)+'deg)" class="pie"></div></div>');
+            $(el).append('<div style="-webkit-transform:rotate('+(sum+180)+'deg)" class="front"><div style="background:'+colors[val]+';-webkit-transform:rotate('+(angle-180)+'deg)" class="pie"></div></div>');
+        }else{
+            $(el).append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+colors[val]+';-webkit-transform:rotate('+angle+'deg)" class="pie"></div></div>');
+        }
+        sum+=angle;
     }
+    console.log(angles);
     $(el).append('<div class="holder back"></div>');
 }
+function doPieForm(){
+    doPie(
+        [
+            parseInt($('#data_1').val()),
+            parseInt($('#data_2').val()),
+            parseInt($('#data_3').val())
+        ],
+        $('figure.chart')
+    );
+}
 $(function(){
-    doPie([33,25,90], $('figure.chart'));
+    $('.data_range').change(function(){
+        doPieForm();
+    });
 });
 </script>
 <style type="text/css">
@@ -53,6 +84,9 @@ figure.chart div.pie{
 <body>
     <figure class="chart">
     </figure>
+    <input type="range" min="0" max="100" class="data_range" id="data_1"/>
+    <input type="range" min="0" max="100" class="data_range" id="data_2"/>
+    <input type="range" min="0" max="100" class="data_range" id="data_3"/>
 	
 </body>
 </html>
