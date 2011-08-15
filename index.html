@@ -4,16 +4,54 @@
 	<meta charset="UTF-8">
 	<title></title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">
+function doPie(values, el){
+    sum = 0;
+    for(val in values) {
+        r = parseInt(Math.random()*255);
+        g = parseInt(Math.random()*255);
+        b = parseInt(Math.random()*255);
+        $(el).append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:rgb('+r+','+g+','+b+');-webkit-transform:rotate('+values[val]+'deg)" class="pie"></div></div>');
+        sum+=values[val];
+    }
+    $(el).append('<div class="holder back"></div>');
+}
+$(function(){
+    doPie([33,25,90], $('figure.chart'));
+});
+</script>
 <style type="text/css">
+body{background:url(img/background.png);}
 figure.chart{
-
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    position: relative;
+}
+figure.chart div{
+    width: inherit;  
+    height: inherit;  
+    border-radius: inherit;
+    position:absolute;
+    top:0px;
+}
+figure.chart div.back{
+    background: #ffc;
+    z-index:1;
+}
+figure.chart div.front{
+    z-index:2;
+    clip: rect(0px,100px,200px,0px);
+}
+figure.chart div.pie{
+    background: #0d0;
+    clip: rect(0px,200px,200px,100px);
+    -webkit-transform: rotate(30deg);
 }
 </style>
 </head>
 <body>
     <figure class="chart">
-        <div class="front"></div>
-        <div class="back"></div>
     </figure>
 	
 </body>
