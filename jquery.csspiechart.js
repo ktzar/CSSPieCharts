@@ -4,7 +4,7 @@
         var defaults = {
             values: [10,20,30],
             size: 300,
-            colors: ['#fcc', '#cfc', '#ccf'],
+            colors: ['red','orange','yellow','green','#0ff', 'blue','purple'],
         };
 
         var options = $.extend(defaults, options);
@@ -28,10 +28,10 @@
                 angles.push(angle);
                 //put 2
                 if (angle > 180){
-                    obj.append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+colors[val]+';-webkit-transform:rotate('+(180)+'deg)" class="pie"></div></div>');
-                    obj.append('<div style="-webkit-transform:rotate('+(sum+180)+'deg)" class="front"><div style="background:'+colors[val]+';-webkit-transform:rotate('+(angle-180)+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-webkit-transform:rotate('+(180)+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-webkit-transform:rotate('+(sum+180)+'deg)" class="front"><div style="background:'+options.colors[val]+';-webkit-transform:rotate('+(angle-180)+'deg)" class="pie"></div></div>');
                 }else{
-                    obj.append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+colors[val]+';-webkit-transform:rotate('+angle+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-webkit-transform:rotate('+angle+'deg)" class="pie"></div></div>');
                 }
                 sum+=angle;
             }

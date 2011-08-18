@@ -3,18 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+    <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.csspiechart.js"></script>
 <script type="text/javascript">
-
-var colors = ['#fcc', '#cfc', '#ccf'];
 
 function doPieForm(){
     $('figure.chart').csspiechart({
         values: [
             parseInt($('#data_1').val()),
             parseInt($('#data_2').val()),
-            parseInt($('#data_3').val())
+            parseInt($('#data_3').val()),
+            parseInt($('#data_4').val()),
+            parseInt($('#data_5').val()),
+            parseInt($('#data_6').val()),
+            parseInt($('#data_7').val())
         ],
         size:600
     });
@@ -25,35 +28,6 @@ $(function(){
     });
 });
 </script>
-<style type="text/css">
-body{background:url(img/background.png);}
-figure.chart{
-    width: 200px;
-    height: 200px;
-    border-radius: 200px;
-    position: relative;
-}
-figure.chart div{
-    width: inherit;  
-    height: inherit;  
-    border-radius: inherit;
-    position:absolute;
-    top:0px;
-}
-figure.chart div.back{
-    background: #ffc;
-    z-index:1;
-}
-figure.chart div.front{
-    z-index:2;
-    clip: rect(0px,100px,200px,0px);
-}
-figure.chart div.pie{
-    background: #0d0;
-    clip: rect(0px,200px,200px,100px);
-    -webkit-transform: rotate(30deg);
-}
-</style>
 </head>
 <body>
     <figure class="chart">
@@ -61,6 +35,10 @@ figure.chart div.pie{
     <input type="range" min="0" max="100" class="data_range" id="data_1"/>
     <input type="range" min="0" max="100" class="data_range" id="data_2"/>
     <input type="range" min="0" max="100" class="data_range" id="data_3"/>
+    <input type="range" min="0" max="100" class="data_range" id="data_4"/>
+    <input type="range" min="0" max="100" class="data_range" id="data_5"/>
+    <input type="range" min="0" max="100" class="data_range" id="data_6"/>
+    <input type="range" min="0" max="100" class="data_range" id="data_7"/>
 	
 </body>
 </html>
