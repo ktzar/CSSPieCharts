@@ -48,7 +48,7 @@
                 //If the angle of this slice is > 180 degrees we need 2 divs for displaying that
                 if (angle > 180){
                     obj.append('<div style="-moz-transform:rotate('+sum+'deg);-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+(180)+'deg);-webkit-transform:rotate('+(180)+'deg)" class="pie"></div></div>');
-                    obj.append('<div style="-moz-transform:rotate('+(sum+180)+'deg);-webkit-transform:rotate('+(sum+180)+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+(angle-180)+'deg);-webkit-transform:rotate('+(angle-180)+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-moz-transform:rotate('+(sum+179)+'deg);-webkit-transform:rotate('+(sum+179)+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+(angle-179)+'deg);-webkit-transform:rotate('+(angle-179)+'deg)" class="pie"></div></div>');
                 }else{
                     obj.append('<div style="-moz-transform:rotate('+sum+'deg);-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+angle+'deg);-webkit-transform:rotate('+angle+'deg)" class="pie"></div></div>');
                 }
