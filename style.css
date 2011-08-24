@@ -1,0 +1,34 @@
+/*!
+ * CSSPieChart jQuery plugin
+ * Copyright 2011, Miguel L Gonzalez
+ * Licensed under the GPL Version 3 license.
+ * http://mentadreams.com
+ *
+ */
+figure.chart{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    position: relative;
+}
+figure.chart div{
+    width: inherit;  
+    height: inherit;  
+    border-radius: inherit;
+    position:absolute;
+    top:0px;
+}
+figure.chart div.back{
+    background: #ffc;
+    z-index:1;
+}
+figure.chart div.front{
+    z-index:2;
+    clip: rect(0px,100px,200px,0px);
+}
+figure.chart div.pie{
+    background: #0d0;
+    clip: rect(0px,200px,200px,100px);
+    -webkit-transform: rotate(30deg);
+}
+
