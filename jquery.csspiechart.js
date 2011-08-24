@@ -33,19 +33,24 @@
             total = 0;
             //Get the sum of values
             for(val in options.values) {
+                //fix NaN values
+                if (isNaN(options.values[val]))
+                    options.values[val] = 0;
                 total+=options.values[val];
             }
             angles = new Array();
             obj.html('');
+                console.log(options.values);
             for(val in options.values) {
                 angle = parseInt(36000*(options.values[val]/total))/100;
                 angles.push(angle);
+                console.log(sum);
                 //If the angle of this slice is > 180 degrees we need 2 divs for displaying that
                 if (angle > 180){
-                    obj.append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-webkit-transform:rotate('+(180)+'deg)" class="pie"></div></div>');
-                    obj.append('<div style="-webkit-transform:rotate('+(sum+180)+'deg)" class="front"><div style="background:'+options.colors[val]+';-webkit-transform:rotate('+(angle-180)+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-moz-transform:rotate('+sum+'deg);-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+(180)+'deg);-webkit-transform:rotate('+(180)+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-moz-transform:rotate('+(sum+180)+'deg);-webkit-transform:rotate('+(sum+180)+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+(angle-180)+'deg);-webkit-transform:rotate('+(angle-180)+'deg)" class="pie"></div></div>');
                 }else{
-                    obj.append('<div style="-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-webkit-transform:rotate('+angle+'deg)" class="pie"></div></div>');
+                    obj.append('<div style="-moz-transform:rotate('+sum+'deg);-webkit-transform:rotate('+sum+'deg)" class="front"><div style="background:'+options.colors[val]+';-moz-transform:rotate('+angle+'deg);-webkit-transform:rotate('+angle+'deg)" class="pie"></div></div>');
                 }
                 sum+=angle;
             }
